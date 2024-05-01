@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body {
+  background: #121212;
+  color: #444;
+  margin: 0;
+}
+body * {
+  font-family: "Ubuntu";
+}
+
+header {
+  text-align: center;
+  background: #1f1f1f;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header img {
+  max-width: 60px;
+  transform: rotate(-10deg);
+}
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  padding-top: 25px;
+  margin-left: 15px;
+  color: #777;
+  transform: rotate(2deg);
+}
+
+
+.todo-list {
+  max-width: 640px;
+  margin: 20px auto;
+}
+.todo {
+  padding: 6px 20px;
+  background: #1f1f1f;
+  color: #e0e0e0;
+  margin-top: 20px;
+  border-radius: 4px;
+  box-shadow: 2px 4px 6px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.todo h3, .todo .icons {
+  display: inline-block;
+}
+.todo .icons {
+  text-align: right;
+}
+.todo i {
+  font-size: 1.4em;
+  margin-left: 6px;
+  cursor: pointer;
+  color: #bbb;
+}
+
+.todo:hover {
+  background-color: #2a2a2a;
+
+}
+.todo button {
+  background-color: #bb86fc;
+  color: #121212;
+}
+
+.todo button:hover {
+  background-color: #3700b3;
+  color: #ffffff;
+}
