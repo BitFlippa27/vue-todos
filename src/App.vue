@@ -8,42 +8,42 @@
       <TodoForm />
     </div>
     <nav class="filter">
-      <button @click="filter = 'active'">Active Todos</button>
-      <button @click="filter = 'archived'">Archived Todos</button>
+      <button>
+        <router-link 
+        :to="{ path: '/active', query: { todos: activeTodos, totalTodos: totalActiveTodos } }"
+      >
+        Active Todos
+      </router-link>
+      </button>
+      <button>
+        <router-link 
+        :to="{ path: '/archived', query: { todos: archivedTodos, totalTodos: totalArchivedTodos                               } }"
+        >
+        Archived Todos
+        </router-link>
+      </button>
+      
     </nav>
     <div class="loading" v-if="loading === true">Loading Tasks...</div>
-    <TodoList 
-      :todos="activeTodos" 
-      :totalTodos="totalActiveTodos"
-      name="Active Todos" 
-      v-if="filter === 'active'"
-    />
-    <TodoList 
-      :todos="completedTodos"
-      :totalTodos="totalCompletedTodos" 
-      name="Archived Todos" 
-      v-if="filter === 'archived'"
-    />
+    <router-view />
   </main>
 </template>
 
 <script setup lang="ts">
-import TodoList from "@/components/TodoList.vue";
 import TodoForm from "@/components/TodoForm.vue";
 import { storeToRefs } from "pinia";
-import { ref } from "vue";
 import { useTodoStore } from "@/stores/todoStore";
 
-const filter = ref("active");
+
 
 const todoStore = useTodoStore();
 
 const { 
   activeTodos, 
-  completedTodos, 
+  archivedTodos, 
   loading, 
   totalActiveTodos, 
-  totalCompletedTodos,
+  totalArchivedTodos,
 } = storeToRefs(todoStore)
 
 todoStore.getTodos();

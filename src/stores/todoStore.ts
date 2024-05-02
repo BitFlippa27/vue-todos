@@ -21,7 +21,7 @@ export const useTodoStore = defineStore('todoStore', {
     activeTodos(state: State) {
       return state.todos.filter(todo => todo.completed === false)
     },
-    completedTodos(state: State) {
+    archivedTodos(state: State) {
       return state.todos.filter(todo => todo.completed === true)
     },
     totalActiveTodos(state: State) {
@@ -29,7 +29,7 @@ export const useTodoStore = defineStore('todoStore', {
         return curr.completed === false ? prev + 1 : prev
       }, 0)
     },
-    totalCompletedTodos(state: State) {
+    totalArchivedTodos(state: State) {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === true ? prev + 1 : prev
       }, 0)
