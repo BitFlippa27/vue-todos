@@ -9,7 +9,7 @@
     </div>
     <nav class="filter">
       <button @click="filter = 'active'">Active Todos</button>
-      <button @click="filter = 'completed'">Archived Todos</button>
+      <button @click="filter = 'archived'">Archived Todos</button>
     </nav>
     <div class="loading" v-if="loading === true">Loading Tasks...</div>
     <TodoList 
@@ -22,7 +22,7 @@
       :todos="completedTodos"
       :totalTodos="totalCompletedTodos" 
       name="Archived Todos" 
-      v-if="filter === 'completed'"
+      v-if="filter === 'archived'"
     />
   </main>
 </template>

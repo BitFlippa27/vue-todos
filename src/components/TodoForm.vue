@@ -16,13 +16,14 @@ import { useTodoStore } from '@/stores/todoStore';
 
 
 const todoStore = useTodoStore();
+const addTodo = todoStore.addTodo;
 const newTodo = ref("");
 
 console.log("TodoForm",newTodo);
 
 const handleSubmit = () => {
   if (newTodo.value.length > 0) {
-    todoStore.addTodo({
+    addTodo({
       id: Math.floor(Math.random() * 1000),
       title: newTodo.value,
       completed: false,
