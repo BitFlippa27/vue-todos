@@ -30,7 +30,7 @@ header h1 {
   transform: rotate(2deg);
 }
 
-
+/* Todo List */
 .todo-list {
   max-width: 640px;
   margin: 20px auto;
@@ -58,6 +58,9 @@ header h1 {
   cursor: pointer;
   color: #bbb;
 }
+.todo i.active {
+  color: #ff005d;
+}
 
 .todo:hover {
   background-color: #2a2a2a;
@@ -73,11 +76,14 @@ header h1 {
   background-color: #3700b3;
   color: #ffffff;
 }
-
+/* Filter */
 .filter {
+  display: flex;
+  justify-items: center;
   width: 640px;
-  margin: 10px auto;
+  margin: 30px auto;
   text-align: right;
+
 }
 .filter button {
   display: inline-block;
@@ -96,4 +102,47 @@ header h1 {
   background: #555;
   border-color: #777;
   color: #fff;
+}
+/* New Todo Form */
+.new-todo-form {
+  padding: 20px 0;
+  background-color: #333;
+  color: #ddd;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+form button {
+  background-color: #444;
+  border: 0;
+  padding: 10px;
+  font-family: "Ubuntu";
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: #ddd;
+}
+
+form button:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+form input {
+  background: #555;
+  border: 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: #ddd;
+  font-size: 1em;
+}
+
+form input::placeholder {
+  color: #bbb;
 }
