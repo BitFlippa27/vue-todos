@@ -35,7 +35,7 @@ export const useTodoStore = defineStore('todoStore', {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === true ? prev + 1 : prev
       }, 0)
-    }
+    },
   },
   actions: {
     addTodo(todo: Todo) {
@@ -50,6 +50,12 @@ export const useTodoStore = defineStore('todoStore', {
       console.log("removeTodoo");
     },
     archiveTodo(id: number) {
+      const todo = this.todos.find(todo => todo.id === id)
+      if (todo) {
+        todo.completed = !todo.completed
+      } 
+    },
+    toggleCompleted(id: number) {
       const todo = this.todos.find(todo => todo.id === id)
       if (todo) {
         todo.completed = !todo.completed

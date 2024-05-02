@@ -38,7 +38,7 @@ header h1 {
 .todo {
   padding: 6px 20px;
   background: #1f1f1f;
-  color: #e0e0e0;
+  color: white;
   margin-top: 20px;
   border-radius: 4px;
   box-shadow: 2px 4px 6px rgba(0,0,0,0.05);
@@ -52,6 +52,8 @@ header h1 {
 .todo .icons {
   text-align: right;
 }
+
+
 .todo i {
   font-size: 1.4em;
   margin-left: 6px;
@@ -59,7 +61,16 @@ header h1 {
   color: #bbb;
 }
 .todo i.active {
-  color: #ff005d;
+  color: green;
+}
+.todo i.trash {
+  color: red;
+}
+
+.completed {
+  text-decoration: line-through;
+  text-decoration-color: white;
+  color: #777;
 }
 
 .todo:hover {

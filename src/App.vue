@@ -20,7 +20,7 @@
     <TodoList 
       :todos="completedTodos"
       :totalTodos="totalCompletedTodos" 
-      name="Completed Todos" 
+      name="Archived Todos" 
       v-if="filter === 'completed'"
     />
   </main>
