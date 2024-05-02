@@ -28,21 +28,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import TodoList from "@/components/TodoList.vue";
-import { useTodoStore } from "@/stores/todoStore";
 import TodoForm from "@/components/TodoForm.vue";
+import { storeToRefs } from "pinia";
+import { ref } from "vue";
+import { useTodoStore } from "@/stores/todoStore";
 
-const filter = ref("active")
+const filter = ref("active");
+
 const todoStore = useTodoStore();
 
-const fetchTodos = todoStore.getTodos;
-fetchTodos();
-const loading = computed(() => todoStore.loading);
-const activeTodos = computed(() => todoStore.activeTodos);
-const completedTodos = computed(() => todoStore.completedTodos);
-const totalActiveTodos = computed(() => todoStore.totalActiveTodos);
-const totalCompletedTodos = computed(() => todoStore.totalCompletedTodos);
+const { 
+  activeTodos, 
+  completedTodos, 
+  loading, 
+  totalActiveTodos, 
+  totalCompletedTodos,
+} = storeToRefs(todoStore)
+
+todoStore.getTodos();
 
 </script>
 

@@ -42,13 +42,13 @@ export const useTodoStore = defineStore('todoStore', {
       const response = await fetch("https://jsonplaceholder.typicode.com/todos");
       const data = await response.json();
       this.todos = data;
-      
+
       this.loading = false;
       
     },
     addTodo(todo: Todo) {
       console.log("todoStore",todo);
-      this.todos.push(todo);
+      this.todos.unshift(todo);
      
     },
     removeTodo(id: number) {
