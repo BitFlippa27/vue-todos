@@ -61,8 +61,9 @@ header h1 {
   color: #bbb;
 }
 .todo i.active {
-  color: green;
+  color: #42b883;
 }
+
 .todo i.trash {
   color: red;
 }
@@ -156,4 +157,14 @@ form input {
 
 form input::placeholder {
   color: #bbb;
+}
+
+.loading {
+  max-width: 640px;
+  border: 1px solid #42b883;
+  background: #333;
+  color: #fff;
+  padding: 5px 0;
+  text-align: center;
+  margin: 30px auto;
 }

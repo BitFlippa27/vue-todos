@@ -8,36 +8,44 @@ type Todo = {
 
 type State = {
   todos: Todo[];
+  loading: boolean;
 };
 
 
 export const useTodoStore = defineStore('todoStore', {
   state: (): State => ({
-    todos: [
-      {id: 1, title: "Coden", completed: false},
-      {id: 2, title: "Sprinten", completed: true},
-      {id: 3, title: "BJJ", completed: false},
-    ]
+    todos: [],
+    loading: false
   }),
   getters: {
-    activeTodos: (state: State) => {
+    activeTodos(state: State) {
       return state.todos.filter(todo => todo.completed === false)
     },
-    completedTodos: (state: State) => {
+    completedTodos(state: State) {
       return state.todos.filter(todo => todo.completed === true)
     },
-    totalActiveTodos: (state: State) => {
+    totalActiveTodos(state: State) {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === false ? prev + 1 : prev
       }, 0)
     },
-    totalCompletedTodos: (state: State) => {
+    totalCompletedTodos(state: State) {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === true ? prev + 1 : prev
       }, 0)
     },
   },
   actions: {
+    async getTodos() {
+      this.loading = true;
+
+      const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+      const data = await response.json();
+      this.todos = data;
+      
+      this.loading = false;
+      
+    },
     addTodo(todo: Todo) {
       console.log("todoStore",todo);
       this.todos.push(todo);

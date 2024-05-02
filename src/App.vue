@@ -11,6 +11,7 @@
       <button @click="filter = 'active'">Active Todos</button>
       <button @click="filter = 'completed'">Archived Todos</button>
     </nav>
+    <div class="loading" v-if="loading === true">Loading Tasks...</div>
     <TodoList 
       :todos="activeTodos" 
       :totalTodos="totalActiveTodos"
@@ -35,7 +36,9 @@ import TodoForm from "@/components/TodoForm.vue";
 const filter = ref("active")
 const todoStore = useTodoStore();
 
-
+const fetchTodos = todoStore.getTodos;
+fetchTodos();
+const loading = computed(() => todoStore.loading);
 const activeTodos = computed(() => todoStore.activeTodos);
 const completedTodos = computed(() => todoStore.completedTodos);
 const totalActiveTodos = computed(() => todoStore.totalActiveTodos);
