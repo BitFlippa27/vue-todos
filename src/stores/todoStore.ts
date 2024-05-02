@@ -36,5 +36,24 @@ export const useTodoStore = defineStore('todoStore', {
         return curr.completed === true ? prev + 1 : prev
       }, 0)
     }
+  },
+  actions: {
+    addTodo(todo: Todo) {
+      console.log("todoStore",todo);
+      this.todos.push(todo);
+     
+    },
+    removeTodo(id: number) {
+      this.todos = this.todos.filter(todo => {
+        return todo.id !== id
+      })
+      console.log("removeTodoo");
+    },
+    archiveTodo(id: number) {
+      const todo = this.todos.find(todo => todo.id === id)
+      if (todo) {
+        todo.completed = !todo.completed
+      } 
+    }
   }
 });
