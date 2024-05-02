@@ -61,8 +61,9 @@ header h1 {
   color: #bbb;
 }
 .todo i.active {
-  color: green;
+  color: #42b883;
 }
+
 .todo i.trash {
   color: red;
 }
@@ -90,14 +91,13 @@ header h1 {
 /* Filter */
 .filter {
   display: flex;
-  justify-items: center;
-  width: 640px;
+  width: 100%;
+  max-width: 640px;
   margin: 30px auto;
-  text-align: right;
-
+  justify-content: end;
 }
 .filter button {
-  display: inline-block;
+  display: flex;
   margin-left: 10px;
   background: #444;
   border: 2px solid #667;
@@ -119,14 +119,15 @@ header h1 {
   padding: 20px 0;
   background-color: #333;
   color: #ddd;
+  
 }
 
 form {
+  width: 100%;
   max-width: 400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr;
 }
 
 form button {
@@ -156,4 +157,21 @@ form input {
 
 form input::placeholder {
   color: #bbb;
+}
+
+.loading {
+  max-width: 640px;
+  border: 1px solid #42b883;
+  background: #333;
+  color: #fff;
+  padding: 5px 0;
+  text-align: center;
+  margin: 30px auto;
+}
+
+@media (min-width: 600px) {
+  form {
+    grid-template-columns: 3fr 1fr;
+  }
+
 }

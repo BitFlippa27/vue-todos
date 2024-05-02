@@ -11,6 +11,7 @@
       <button @click="filter = 'active'">Active Todos</button>
       <button @click="filter = 'completed'">Archived Todos</button>
     </nav>
+    <div class="loading" v-if="loading === true">Loading Tasks...</div>
     <TodoList 
       :todos="activeTodos" 
       :totalTodos="totalActiveTodos"
@@ -27,19 +28,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import TodoList from "@/components/TodoList.vue";
-import { useTodoStore } from "@/stores/todoStore";
 import TodoForm from "@/components/TodoForm.vue";
+import { storeToRefs } from "pinia";
+import { ref } from "vue";
+import { useTodoStore } from "@/stores/todoStore";
 
-const filter = ref("active")
+const filter = ref("active");
+
 const todoStore = useTodoStore();
 
+const { 
+  activeTodos, 
+  completedTodos, 
+  loading, 
+  totalActiveTodos, 
+  totalCompletedTodos,
+} = storeToRefs(todoStore)
 
-const activeTodos = computed(() => todoStore.activeTodos);
-const completedTodos = computed(() => todoStore.completedTodos);
-const totalActiveTodos = computed(() => todoStore.totalActiveTodos);
-const totalCompletedTodos = computed(() => todoStore.totalCompletedTodos);
+todoStore.getTodos();
 
 </script>
 
