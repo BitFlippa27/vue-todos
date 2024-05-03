@@ -18,6 +18,15 @@
       <h3 v-else :class="{ 'completed': props.todo?.completed }">
         {{ props.todo?.title }}</h3>
       <div class="icons">
+      <select 
+        :class="['todo', priorityClass(props.todo?.priority)]"
+        v-model="newTodoPriority" 
+        @change="handlePriorityChange($event.target as HTMLSelectElement)"
+      >
+        <option value="1">High</option>
+        <option value="2">Medium</option>
+        <option value="3">Low</option>
+      </select>
       <i 
         class="material-icons " 
         @click="editing = !editing"
@@ -50,12 +59,22 @@ const props = defineProps({
 let editableTitle = ref(props.todo?.title)
 let editing = ref(false)
 const isCompleted = ref(false);
+const newTodoPriority = ref()
 
 const todoStore = useTodoStore();
 const removeTodo = todoStore.removeTodo;
 const completeTodo = todoStore.toggleCompleted;
 const updateTodo = todoStore.updateTodo;
 
+const handlePriorityChange = (target: HTMLSelectElement) => {
+  const newPriority = Number(target.value);
+  updateTodo({
+    id: props.todo?.id,
+    title: editableTitle.value,
+    completed: props.todo?.completed,
+    priority: newPriority
+  });
+}
 
 const handleArchiveTodo = (id: number) => {
   isCompleted.value = true; 
@@ -71,10 +90,24 @@ const handleSubmit = () => {
   updateTodo({
     id: props.todo?.id,
     title: editableTitle.value,
-    completed: false
+    completed: false,
+    priority: newTodoPriority.value
   });
   editing.value = false
 }
+
+const priorityClass = (priority: number) => {
+  switch(priority) {
+    case 1: 
+      return 'high-priority';
+    case 2: 
+      return 'medium-priority';
+    case 3: 
+      return 'low-priority';
+    default: 
+      return '';
+     }
+   }
 
 
 </script>
