@@ -15,7 +15,7 @@
           <router-link 
           :to="{ path: '/archived'}"
         >
-          Archived Todos
+          Completed Todos
           </router-link>
         </button>
     </nav>
@@ -23,27 +23,21 @@
     <div class="new-todo-form">
       <TodoForm />
     </div>
-    <div class="loading" v-if="loading === true">Loading Tasks...</div>
-    <router-view />
+      <router-view />
   </main>
 </template>
 
 <script setup lang="ts">
 import TodoForm from "@/components/TodoForm.vue";
-import { storeToRefs } from "pinia";
+import { onMounted } from 'vue';
 import { useTodoStore } from "@/stores/todoStore";
 
 const todoStore = useTodoStore();
 
-const { 
-  activeTodos, 
-  archivedTodos, 
-  loading, 
-  totalActiveTodos, 
-  totalArchivedTodos,
-} = storeToRefs(todoStore)
+onMounted(() => {
+     todoStore.getTodos();
+   });
 
-todoStore.getTodos();
 
 </script>
 

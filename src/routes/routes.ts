@@ -3,7 +3,7 @@ import {
   createWebHistory, 
 } from "vue-router";
 
-import ArchivedTodos from "./ArchivedTodos.vue";
+import CompletedTodos from "./CompletedTodos.vue";
 import ActiveTodos from "./ActiveTodos.vue";
 
 
@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/archived',
     name: 'ArchivedTodos',
-    component: ArchivedTodos,
+    component: CompletedTodos,
   }
 ]
 

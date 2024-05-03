@@ -39,6 +39,9 @@ header h1 {
   max-width: 640px;
   margin: 20px auto;
 }
+.todo-list p {
+  color: #ddd;
+}
 .todo {
   padding: 6px 20px;
   background: #1f1f1f;
@@ -188,6 +191,15 @@ form input::placeholder {
   text-align: center;
   margin: 30px auto;
 }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1.5s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+
 
 @media (min-width: 600px) {
   form {
