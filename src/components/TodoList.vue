@@ -19,10 +19,6 @@ import TodoItem from "@/components/TodoItem.vue";
 import { storeToRefs } from "pinia";
 import { useTodoStore } from '@/stores/todoStore';
 
-const todoStore = useTodoStore();
-
-const { loading } = storeToRefs(todoStore);
-
 const props = defineProps({
   todos: Object,
   todo: Object,
@@ -30,5 +26,8 @@ const props = defineProps({
   totalTodos: Number
 });
 
+const todoStore = useTodoStore();
+
+const { loading } = storeToRefs(todoStore);
 
 </script>

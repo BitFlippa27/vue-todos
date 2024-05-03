@@ -20,8 +20,9 @@ import { useTodoStore } from '@/stores/todoStore';
 
 const todoStore = useTodoStore();
 const addTodo = todoStore.addTodo;
-const newTodo = ref("");
 
+const newTodo = ref("");
+const newTodoPriority = ref(2);
 
 const handleSubmit = () => {
   if (newTodo.value.length > 0) {
@@ -29,8 +30,10 @@ const handleSubmit = () => {
       id: Math.floor(Math.random() * 1000),
       title: newTodo.value,
       completed: false,
+      priority: newTodoPriority.value
     });
     newTodo.value = "";
+    newTodoPriority.value = 2;
   }
 }
 

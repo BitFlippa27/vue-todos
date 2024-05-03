@@ -4,12 +4,14 @@ type Todo = {
   id: number;
   title: string;
   completed: boolean;
+  priority: number;
 };
 
 type State = {
   todos: Todo[];
   loading: boolean;
   searchString: string;
+  priority: number;
 };
 
 
@@ -17,7 +19,8 @@ export const useTodoStore = defineStore('todoStore', {
   state: (): State => ({
     todos: [],
     loading: false,
-    searchString: ""
+    searchString: "",
+    priority: 1
   }),
   getters: {
     activeTodos(state: State) {
@@ -33,7 +36,10 @@ export const useTodoStore = defineStore('todoStore', {
       filteredTodos = filteredTodos.filter(todo => 
         todo.title.toLowerCase().includes(state.searchString.toLowerCase()));
     }
-      return filteredTodos;
+      return filteredTodos.sort((a, b) => a.priority - b.priority);
+    },
+    sortedTodos(state: State) {
+      return state.todos.slice().sort((a, b) => a.priority - b.priority)
     },
     totalActiveTodos(state: State) {
       return state.todos.reduce((prev, curr) => {
