@@ -22,7 +22,6 @@ const todoStore = useTodoStore();
 const addTodo = todoStore.addTodo;
 const newTodo = ref("");
 
-console.log("TodoForm",newTodo);
 
 const handleSubmit = () => {
   if (newTodo.value.length > 0) {
