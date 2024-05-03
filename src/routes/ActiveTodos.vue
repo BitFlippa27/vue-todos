@@ -1,6 +1,8 @@
 <template>
+  <AddTodoForm />
+  <SearchBox />
   <TodoList
-    :todos="activeTodos"
+    :todos="activeSearchedTodos"
     :totalTodos="totalActiveTodos"
     name="Active Todos"
    />
@@ -8,6 +10,9 @@
 
 <script setup lang="ts">
 import TodoList from "@/components/TodoList.vue";
+import AddTodoForm from "@/components/AddTodoForm.vue";
+import SearchBox from "@/components/SearchBox.vue";
+import { computed } from "vue";
 import { useTodoStore } from "@/stores/todoStore";
 import { storeToRefs } from "pinia";
 
@@ -20,7 +25,8 @@ const props = defineProps({
 
 const todoStore = useTodoStore();
 
-const { activeTodos, totalActiveTodos } = storeToRefs(todoStore)
+const { totalActiveTodos } = storeToRefs(todoStore)
 
+const activeSearchedTodos = computed(() => todoStore.searchedTodos(false))
 </script>
 

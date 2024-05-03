@@ -1,13 +1,16 @@
 <template>
-  <form @submit.prevent="handleSubmit"> 
+  <div class="add-todo-form"> 
+    <form @submit.prevent="handleSubmit"> 
     <input 
       @keyup.enter="handleSubmit"
       type="text"
-      placeholder="Your todo"
+      placeholder="Type in todo"
       v-model="newTodo"
     >
     <button>Add</button>
    </form>
+  </div>
+  
 </template>
 
 <script setup lang="ts">

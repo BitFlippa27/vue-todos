@@ -130,7 +130,7 @@ header h1 {
   color: #fff;
 }
 /* New Todo Form */
-.new-todo-form {
+.add-todo-form {
   position: sticky;
   top: 8.7rem;
   z-index: 10000;
