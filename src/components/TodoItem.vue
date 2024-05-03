@@ -54,7 +54,7 @@ const isCompleted = ref(false);
 const todoStore = useTodoStore();
 const removeTodo = todoStore.removeTodo;
 const completeTodo = todoStore.toggleCompleted;
-const updatedTodo = todoStore.updateTodo;
+const updateTodo = todoStore.updateTodo;
 
 
 const handleArchiveTodo = (id: number) => {
@@ -68,7 +68,7 @@ const handleRemoveTodo = (id: number) => {
 }
 
 const handleSubmit = () => {
-  updatedTodo({
+  updateTodo({
     id: props.todo?.id,
     title: editableTitle.value,
     completed: false

@@ -9,13 +9,15 @@ type Todo = {
 type State = {
   todos: Todo[];
   loading: boolean;
+  searchString: string;
 };
 
 
 export const useTodoStore = defineStore('todoStore', {
   state: (): State => ({
     todos: [],
-    loading: false
+    loading: false,
+    searchString: ""
   }),
   getters: {
     activeTodos(state: State) {
@@ -23,6 +25,15 @@ export const useTodoStore = defineStore('todoStore', {
     },
     completedTodos(state: State) {
       return state.todos.filter(todo => todo.completed === true)
+    },
+    searchedTodos: (state: State) => (filterCompleted: boolean) => {
+      let filteredTodos = state.todos.filter(todo => 
+        filterCompleted ? todo.completed : !todo.completed);
+      if (state.searchString) {
+      filteredTodos = filteredTodos.filter(todo => 
+        todo.title.toLowerCase().includes(state.searchString.toLowerCase()));
+    }
+      return filteredTodos;
     },
     totalActiveTodos(state: State) {
       return state.todos.reduce((prev, curr) => {
@@ -68,6 +79,9 @@ export const useTodoStore = defineStore('todoStore', {
       if (todo) {
         todo.completed = !todo.completed
       } 
-    }
+    },
+    setSearchString(newString: string) {
+      this.searchString = newString;
+  },
   }
 });
