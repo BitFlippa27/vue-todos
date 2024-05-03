@@ -3,6 +3,7 @@
     <form @submit.prevent="handleSearch"> 
     <input 
       @keyup.enter="handleSearch"
+      @input="handleSearch"
       type="text"
       placeholder="Search Todo"
       v-model="searchField"
