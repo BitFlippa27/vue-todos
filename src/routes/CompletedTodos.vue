@@ -1,8 +1,8 @@
 <template>
   <TodoList
-    :todos="archivedTodos"
-    :totalTodos="totalArchivedTodos"
-    name="Archived Todos"
+    :todos="completedTodos"
+    :totalTodos="totalCompletedTodos"
+    name="Completed Todos"
    />
 </template>
 
@@ -17,15 +17,9 @@ const props = defineProps({
   name: String,
 });
 
-
 const todoStore = useTodoStore();
 
-const { 
-  activeTodos, 
-  archivedTodos, 
-  loading, 
-  totalArchivedTodos,
-} = storeToRefs(todoStore)
+const { completedTodos, totalCompletedTodos } = storeToRefs(todoStore)
 
 </script>
 

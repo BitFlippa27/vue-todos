@@ -20,11 +20,7 @@ const props = defineProps({
 
 const todoStore = useTodoStore();
 
-const { 
-  activeTodos, 
-  loading,
-  totalActiveTodos
-} = storeToRefs(todoStore)
+const { activeTodos, totalActiveTodos } = storeToRefs(todoStore)
 
 </script>
 
