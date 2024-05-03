@@ -30,7 +30,8 @@ const handleSubmit = () => {
       id: Math.floor(Math.random() * 1000),
       title: newTodo.value,
       completed: false,
-      priority: newTodoPriority.value
+      priority: newTodoPriority.value,
+      date: new Date()
     });
     newTodo.value = "";
     newTodoPriority.value = 2;
