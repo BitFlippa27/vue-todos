@@ -14,8 +14,10 @@ import TodoItem from "@/components/TodoItem.vue";
 
 const props = defineProps({
   todos: Object,
+  todo: Object,
   name: String,
   totalTodos: Number
 });
+
 
 </script>

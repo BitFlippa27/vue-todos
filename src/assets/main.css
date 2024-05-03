@@ -10,11 +10,14 @@ body * {
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   text-align: center;
   background: #1f1f1f;
   padding: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 header img {
@@ -29,6 +32,7 @@ header h1 {
   color: #777;
   transform: rotate(2deg);
 }
+
 
 /* Todo List */
 .todo-list {
@@ -101,9 +105,8 @@ header h1 {
 .filter {
   display: flex;
   width: 100%;
-  max-width: 640px;
   margin: 30px auto;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .filter button {
   display: flex;
@@ -125,10 +128,18 @@ header h1 {
 }
 /* New Todo Form */
 .new-todo-form {
+  position: sticky;
+  top: 8.7rem;
+  z-index: 10000;
   padding: 20px 0;
   background-color: #333;
   color: #ddd;
-  
+}
+
+a:-webkit-any-link {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 form {
@@ -142,7 +153,7 @@ form {
 form button {
   background-color: #444;
   border: 0;
-  padding: 10px;
+  margin-left: 10px;
   font-family: "Ubuntu";
   border-radius: 6px;
   cursor: pointer;
