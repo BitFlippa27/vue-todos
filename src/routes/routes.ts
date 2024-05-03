@@ -9,13 +9,18 @@ import ActiveTodos from "./ActiveTodos.vue";
 
 const routes = [
   {
-    path: '/active',
+    path: '/',
     name: 'Active',
+    component: ActiveTodos // specify your Home component here
+  },
+  {
+    path: '/active',
+    name: 'ActiveTodos',
     component: ActiveTodos,
   },
   {
     path: '/archived',
-    name: 'Archived',
+    name: 'ArchivedTodos',
     component: ArchivedTodos,
   }
 ]

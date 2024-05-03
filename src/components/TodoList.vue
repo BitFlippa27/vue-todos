@@ -19,6 +19,5 @@ const props = defineProps({
   totalTodos: Number
 });
 
-console.log("TodoList", props.todo);
 
 </script>

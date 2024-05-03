@@ -54,7 +54,6 @@ const handleSbmit = () => {
   });
   editing.value = false
 }
-console.log(props.todo);
 
 
 </script>
