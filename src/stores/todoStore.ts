@@ -1,4 +1,3 @@
-import type CompletedTodos from "@/routes/CompletedTodos.vue";
 import { defineStore } from "pinia";
 
 type Todo = {
@@ -52,9 +51,11 @@ export const useTodoStore = defineStore('todoStore', {
     filteredByPriority: (state: State) => (filteredTodos: Todo[]) => {
       return filteredTodos.slice().sort((a, b) => a.priority - b.priority)
     },
+    /*
     filteredByDate: (state: State) => (filteredTodos: Todo[]) => {
       return filteredTodos.slice().sort((a, b) => a.date.getTime() - b.date.getTime())
     },
+    */
     totalActiveTodos(state: State) {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === false ? prev + 1 : prev

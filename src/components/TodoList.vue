@@ -3,8 +3,7 @@
     <div>
       <p>{{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})</p>
       <select v-model="filterOption">
-        <option value="">Default</option>
-        <option value="date">By Date</option>
+        <option value="default">Default</option>
         <option value="priority">By Priority</option>
       </select>
     </div>
@@ -36,17 +35,15 @@ const props = defineProps({
 
 const todoStore = useTodoStore();
 const filteredByPriority = todoStore.filteredByPriority;
-const filteredByDate = todoStore.filteredByDate;
+//const filteredByDate = todoStore.filteredByDate;
 const searchedTodos = todoStore.searchedTodos;
 
 
 const { loading } = storeToRefs(todoStore);
-const filterOption = ref("");
+const filterOption = ref("default");
 
 let displayedTodos = computed(() => {
-  if (filterOption.value === 'date') {
-    return filteredByDate(props.todos);
-  } else if (filterOption.value === 'priority') {
+  if (filterOption.value === 'priority') {
     return filteredByPriority(props.todos);
   } else if (todoStore.searchString) {
     return searchedTodos(props.todos);
