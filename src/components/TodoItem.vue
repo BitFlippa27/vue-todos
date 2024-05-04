@@ -18,9 +18,10 @@
       <h3 v-else :class="{ 'completed': props.todo?.completed }">
         {{ props.todo?.title }}</h3>
       <div class="icons">
-      <select 
+      
+        <select 
         :class="['todo', priorityClass(props.todo?.priority)]"
-        v-model="newTodoPriority" 
+        v-model="newPriority" 
         @change="handlePriorityChange($event.target as HTMLSelectElement)"
       >
         <option value="1">High</option>
@@ -59,16 +60,25 @@ const props = defineProps({
 let editableTitle = ref(props.todo?.title)
 let editing = ref(false)
 const isCompleted = ref(false);
-const newTodoPriority = ref()
+const newPriority = ref()
 
 const todoStore = useTodoStore();
-const removeTodo = todoStore.removeTodo;
-const completeTodo = todoStore.toggleCompleted;
-const updateTodo = todoStore.updateTodo;
+
+
+const handleSubmit = () => {
+  todoStore.updateTodo({
+    id: props.todo?.id,
+    title: editableTitle.value,
+    completed: false,
+    priority: newPriority.value,
+    date: props.todo?.date
+  });
+  editing.value = false
+}
 
 const handlePriorityChange = (target: HTMLSelectElement) => {
   const newPriority = Number(target.value);
-  updateTodo({
+  todoStore.updateTodo({
     id: props.todo?.id,
     title: editableTitle.value,
     completed: props.todo?.completed,
@@ -79,35 +89,26 @@ const handlePriorityChange = (target: HTMLSelectElement) => {
 
 const handleCompleteTodo = (id: number) => {
   isCompleted.value = true; 
-  setTimeout(() => completeTodo(id), 500); 
+  setTimeout(() => todoStore.toggleCompleted(id), 500); 
 }
 
 const handleRemoveTodo = (id: number) => {
   isCompleted.value = true;
-  setTimeout(() => removeTodo(id), 500); 
+  setTimeout(() => todoStore.removeTodo(id), 500); 
 }
 
-const handleSubmit = () => {
-  updateTodo({
-    id: props.todo?.id,
-    title: editableTitle.value,
-    completed: false,
-    priority: newTodoPriority.value,
-    date: props.todo?.date
-  });
-  editing.value = false
-}
+
 
 const priorityClass = (priority: number) => {
   switch(priority) {
     case 1: 
-      return 'high-priority';
+      return "high-priority";
     case 2: 
-      return 'medium-priority';
+      return "medium-priority";
     case 3: 
-      return 'low-priority';
+      return "low-priority";
     default: 
-      return '';
+      return "";
      }
    }
 

@@ -85,7 +85,11 @@ export const useTodoStore = defineStore('todoStore', {
     updateTodo(updatedTodo: Todo) {
       const index = this.todos.findIndex(todo => todo.id === updatedTodo.id)
       if (index !== -1) {
-        this.todos[index] = updatedTodo;
+        this.todos = [
+          ...this.todos.slice(0, index),
+          updatedTodo,
+          ...this.todos.slice(index + 1)
+        ];
       }
     },
     removeTodo(id: number) {
