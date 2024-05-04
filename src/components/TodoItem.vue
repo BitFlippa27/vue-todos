@@ -18,7 +18,9 @@
       <h3 v-else :class="{ 'completed': props.todo?.completed }">
         {{ props.todo?.title }}</h3>
       <div class="icons">
-      
+        <span>
+          {{ props.todo?.date?.toLocaleDateString() }}
+        </span>
         <select 
         :class="['todo', priorityClass(props.todo?.priority)]"
         v-model="newPriority" 

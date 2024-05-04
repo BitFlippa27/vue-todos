@@ -5,6 +5,7 @@
       <select v-model="filterOption">
         <option value="default">Default</option>
         <option value="priority">By Priority</option>
+        <option value="date">By Date</option>
       </select>
     </div>
     <transition name="fade" mode="out-in">
@@ -41,10 +42,13 @@ const filterOption = ref("default");
 
 let displayedTodos = computed(() => {
   if (filterOption.value === "priority") {
-    return todoStore.filteredByPriority(props.todos);
+      return todoStore.filteredByPriority(props.todos);
   } else if (todoStore.searchString) {
-    return todoStore.searchedTodos(props.todos);
-  } else {
+      return todoStore.searchedTodos(props.todos);
+  } else if (filterOption.value === "date") {
+      return todoStore.filteredByDate(props.todos);
+  } 
+  else {
     return props.todos; 
   }
 });
