@@ -47,15 +47,17 @@ export const useTodoStore = defineStore('todoStore', {
     }
       return filteredTodos;
     },
-  
     filteredByPriority: (state: State) => (filteredTodos: Todo[]) => {
       return filteredTodos.slice().sort((a, b) => a.priority - b.priority)
     },
-    /*
     filteredByDate: (state: State) => (filteredTodos: Todo[]) => {
-      return filteredTodos.slice().sort((a, b) => a.date.getTime() - b.date.getTime())
+      return filteredTodos.slice().sort((a, b) => {
+        if (!a.date || !b.date) {
+          return 0; //considered euqal in terms of sorting
+        }
+        return a.date.getTime() - b.date.getTime();
+      })
     },
-    */
     totalActiveTodos(state: State) {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === false ? prev + 1 : prev
@@ -70,12 +72,23 @@ export const useTodoStore = defineStore('todoStore', {
   actions: {
     async getTodos() {
       this.loading = true;
-
-      const response = await fetch("https://jsonplaceholder.typicode.com/todos");
-      const data = await response.json();
-      this.todos = data;
-
-      this.loading = false;
+      try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        this.todos = data;
+        this.loading = false;
+      } catch (error) {
+        if (error instanceof TypeError) {
+          console.error("Network error or CORS misconfigured on the server-side: ", error);
+        } else if (error instanceof Error) {
+          console.error("HTTP error: ", error);
+        } else {
+          console.error("Unknown error: ", error);
+        }
+      }
     },
     addTodo(todo: Todo) {
       console.log("todoStore",todo);
@@ -105,9 +118,6 @@ export const useTodoStore = defineStore('todoStore', {
     },
     setSearchString(newSearchString: string) {
       this.searchString = newSearchString;
-  },
-    setFilterOption(newOption: string) {
-      this.filterOption = newOption;
-    }
+    },
   }
 });
