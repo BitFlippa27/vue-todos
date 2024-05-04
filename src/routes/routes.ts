@@ -11,7 +11,7 @@ const routes = [
   {
     path: '/',
     name: 'Active',
-    component: ActiveTodos // specify your Home component here
+    component: ActiveTodos 
   },
   {
     path: '/active',
@@ -19,8 +19,8 @@ const routes = [
     component: ActiveTodos,
   },
   {
-    path: '/archived',
-    name: 'ArchivedTodos',
+    path: '/completed',
+    name: 'CompletedTodos',
     component: CompletedTodos,
   }
 ]

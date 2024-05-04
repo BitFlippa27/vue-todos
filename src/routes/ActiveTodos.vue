@@ -1,6 +1,10 @@
 <template>
-  <AddTodoForm />
-  <SearchBox />
+   <div class="flex justify-center h-20 p-4">
+    <div class="flex-col space-y-20">
+      <AddTodoForm />
+      <SearchBox /> 
+    </div>
+  </div>
   <TodoList
     :todos="activeTodos"
     :totalTodos="totalActiveTodos"

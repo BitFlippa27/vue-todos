@@ -2,6 +2,7 @@
   <div class="add-todo-form"> 
     <form @submit.prevent="handleSearch"> 
     <input 
+      class="form"
       @keyup.enter="handleSearch"
       @input="handleSearch"
       type="text"
