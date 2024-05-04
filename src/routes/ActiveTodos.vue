@@ -1,15 +1,18 @@
 <template>
-   <div class="flex justify-center h-20 p-4">
-    <div class="flex-col space-y-20">
+   <div class="flex flex-col items-center space-y-8 mt-12">
+    <div class="flex justify-center items-center space-x-8">
       <AddTodoForm />
       <SearchBox /> 
     </div>
+    <TodoList
+      :todos="activeTodos"
+      :totalTodos="totalActiveTodos"
+      name="Active Todos"
+    />
   </div>
-  <TodoList
-    :todos="activeTodos"
-    :totalTodos="totalActiveTodos"
-    name="Active Todos"
-   />
+
+    
+    
 </template>
 
 <script setup lang="ts">

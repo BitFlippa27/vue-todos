@@ -5,7 +5,7 @@
         class="max-w-xs transform rotate-[-10deg]" 
         src="../assets/vuejs-icon.svg" 
         alt="Vue Logo">
-      <h1 class="text-2xl pt-6 ml-4 text-gray-400 transform rotate-[2deg]">
+      <h1 class="text-2xl p-4 ml-4 text-white transform rotate-[2deg] border-b-4 border-transparent bg-gradient-to-r from-emerald-600 to-gray-500 rounded-lg">
         Vue Todos
       </h1>
     </div>
@@ -25,7 +25,7 @@
         </router-link>
       </button>
     </nav>
-    <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-red-500 to-yellow-500"></div>
+    <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-emerald-400 to-gray-500"></div>
   </header> 
 </template>
 

@@ -1,10 +1,13 @@
 <template>
-  <SearchBox />
-  <TodoList
-    :todos="completedTodos"
-    :totalTodos="totalCompletedTodos"
-    name="Completed Todos"
-   />
+  <div class="flex flex-col items-center space-y-8 mt-12">
+      <SearchBox />
+      <TodoList
+        :todos="completedTodos"
+        :totalTodos="totalCompletedTodos"
+        name="Completed Todos"
+      />
+  </div>
+ 
 </template>
 
 <script setup lang="ts">
