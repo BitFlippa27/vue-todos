@@ -3,7 +3,7 @@
     <div class="todo" v-if="!isCompleted">
       <i 
         :class="{ 'active': props.todo?.completed }" 
-        class="material-icons" @click="handleArchiveTodo(props.todo?.id)"
+        class="material-icons" @click="handleCompleteTodo(props.todo?.id)"
         :key="props.todo?.completed"
         title="Archive"
       >
@@ -72,11 +72,12 @@ const handlePriorityChange = (target: HTMLSelectElement) => {
     id: props.todo?.id,
     title: editableTitle.value,
     completed: props.todo?.completed,
-    priority: newPriority
+    priority: newPriority,
+    date: props.todo?.date
   });
 }
 
-const handleArchiveTodo = (id: number) => {
+const handleCompleteTodo = (id: number) => {
   isCompleted.value = true; 
   setTimeout(() => completeTodo(id), 500); 
 }
@@ -91,7 +92,8 @@ const handleSubmit = () => {
     id: props.todo?.id,
     title: editableTitle.value,
     completed: false,
-    priority: newTodoPriority.value
+    priority: newTodoPriority.value,
+    date: props.todo?.date
   });
   editing.value = false
 }

@@ -5,13 +5,16 @@ type Todo = {
   title: string;
   completed: boolean;
   priority: number;
+  date: Date;
 };
 
 type State = {
   todos: Todo[];
   loading: boolean;
   searchString: string;
+  filterOption: string;
   priority: number;
+  date: Date;
 };
 
 
@@ -20,27 +23,39 @@ export const useTodoStore = defineStore('todoStore', {
     todos: [],
     loading: false,
     searchString: "",
-    priority: 1
+    priority: 1,
+    date: new Date(),
+    filterOption: "",
   }),
   getters: {
-    activeTodos(state: State) {
+    activeTodos: (state: State) =>{
       return state.todos.filter(todo => todo.completed === false)
-    },
-    completedTodos(state: State) {
+    }, 
+    completedTodos: (state: State) =>{
       return state.todos.filter(todo => todo.completed === true)
-    },
-    searchedTodos: (state: State) => (filterCompleted: boolean) => {
+    }, 
+    filteredTodos: (state: State) => {
       let filteredTodos = state.todos.filter(todo => 
-        filterCompleted ? todo.completed : !todo.completed);
+        state.filterOption ? todo.completed : !todo.completed);
+
+        return filteredTodos;
+    },
+    searchedTodos: (state: State) => (filteredTodos: Todo[]) => {
       if (state.searchString) {
-      filteredTodos = filteredTodos.filter(todo => 
+        filteredTodos = filteredTodos.filter(todo => 
         todo.title.toLowerCase().includes(state.searchString.toLowerCase()));
     }
-      return filteredTodos.sort((a, b) => a.priority - b.priority);
+      return filteredTodos;
     },
-    sortedTodos(state: State) {
-      return state.todos.slice().sort((a, b) => a.priority - b.priority)
+  
+    filteredByPriority: (state: State) => (filteredTodos: Todo[]) => {
+      return filteredTodos.slice().sort((a, b) => a.priority - b.priority)
     },
+    /*
+    filteredByDate: (state: State) => (filteredTodos: Todo[]) => {
+      return filteredTodos.slice().sort((a, b) => a.date.getTime() - b.date.getTime())
+    },
+    */
     totalActiveTodos(state: State) {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === false ? prev + 1 : prev
@@ -61,7 +76,6 @@ export const useTodoStore = defineStore('todoStore', {
       this.todos = data;
 
       this.loading = false;
-      
     },
     addTodo(todo: Todo) {
       console.log("todoStore",todo);
@@ -78,7 +92,6 @@ export const useTodoStore = defineStore('todoStore', {
       this.todos = this.todos.filter(todo => {
         return todo.id !== id
       })
-      console.log("removeTodoo");
     },
     toggleCompleted(id: number) {
       const todo = this.todos.find(todo => todo.id === id)
@@ -86,8 +99,11 @@ export const useTodoStore = defineStore('todoStore', {
         todo.completed = !todo.completed
       } 
     },
-    setSearchString(newString: string) {
-      this.searchString = newString;
+    setSearchString(newSearchString: string) {
+      this.searchString = newSearchString;
   },
+    setFilterOption(newOption: string) {
+      this.filterOption = newOption;
+    }
   }
 });
