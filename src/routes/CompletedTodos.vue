@@ -1,13 +1,12 @@
 <template>
   <div class="flex flex-col items-center space-y-8 mt-12 px-4 sm:px-0 ">
-    </div>
       <TodoList
         :todos="completedTodos"
         :totalTodos="totalCompletedTodos"
         name="Completed Todos"
         :filterFlag="'completed'"
       />
-
+  </div>
 </template>
 
 <script setup lang="ts">
