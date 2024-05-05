@@ -3,25 +3,21 @@ import {
   createWebHistory, 
 } from "vue-router";
 
-import CompletedTodos from "./CompletedTodos.vue";
-import ActiveTodos from "./ActiveTodos.vue";
-
-
 const routes = [
   {
     path: '/',
     name: 'Active',
-    component: ActiveTodos 
+    component: () => import("../views/ActiveTodos.vue") 
   },
   {
     path: '/active',
     name: 'ActiveTodos',
-    component: ActiveTodos,
+    component: () => import("../views/ActiveTodos.vue") ,
   },
   {
     path: '/completed',
     name: 'CompletedTodos',
-    component: CompletedTodos,
+    component: () => import("../views/CompletedTodos.vue") ,
   }
 ]
 

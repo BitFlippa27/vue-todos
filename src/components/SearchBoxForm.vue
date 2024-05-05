@@ -1,14 +1,14 @@
 <template>
   <div> 
     <form @submit.prevent="handleSearch"> 
-    <input 
-      class="form"
-      @keyup.enter="handleSearch"
-      @input="handleSearch"
-      type="text"
-      placeholder="Search Todo"
-      v-model="searchField"
-    >
+      <input 
+        class="form"
+        @keyup.enter="handleSearch"
+        @input="handleSearch"
+        type="text"
+        placeholder="Search Todo"
+        v-model="searchField"
+      >
    </form>
   </div>
   

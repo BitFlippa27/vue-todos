@@ -11,13 +11,11 @@
     <button class="button">Add</button>
    </form>
   </div>
-  
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import { useTodoStore } from '@/stores/todoStore';
-
 
 const todoStore = useTodoStore();
 const addTodo = todoStore.addTodo;
@@ -25,8 +23,8 @@ const addTodo = todoStore.addTodo;
 const newTodo = ref("");
 const newTodoPriority = ref(2);
 
+
 const handleSubmit = () => {
-  if (newTodo.value.length > 0) {
     addTodo({
       id: Math.floor(Math.random() * 1000),
       title: newTodo.value,
@@ -36,7 +34,6 @@ const handleSubmit = () => {
     });
     newTodo.value = "";
     newTodoPriority.value = 2;
-  }
 }
 
 </script>

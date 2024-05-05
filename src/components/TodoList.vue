@@ -1,7 +1,9 @@
 <template>
   <div class="w-70 md:w-3/4 lg:w-2/3 mx-auto todo-list">
     <div class="space-y-4 flex justify-between items-center">
-      <p class="text-xl text-gray-400">{{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})</p>
+      <p class="text-xl text-gray-400">
+        {{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})
+      </p>
       <div class="flex flex-col items-start">
         <p>Filter Todos</p>
         <select 
@@ -18,21 +20,21 @@
       class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between"  
       v-if="filterFlag === 'active'" 
     >
-      <AddTodoForm class="w-full sm:w-1/2"  />
-      <SearchBox  /> 
+      <AddTodoForm />
+      <SearchBoxForm />
     </div>
     <div
       class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between" 
       v-if="filterFlag === 'completed'"
     >
-      <SearchBox class="w-full sm:w-1/2" /> 
+      <SearchBoxForm /> 
     </div>
     <div v-if="!loading">
-    <transition-group name="list" tag="div">
-      <div v-for="todo in displayedTodos" :key="todo.id">
-        <TodoItem :todo="todo" />
-      </div>
-    </transition-group>
+      <transition-group name="list" tag="div">
+        <div v-for="todo in displayedTodos" :key="todo.id">
+          <TodoItem :todo="todo" />
+        </div>
+      </transition-group>
     </div>
     <div class="loading" v-if="loading">
       Loading Tasks...
@@ -41,9 +43,19 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * @module TodoList
+ * @description 
+ * The `TodoList.vue` component is responsible for managing and displaying a list of todo items.The component 
+ * provides a dropdown menu that allows the user to sort the todo items by "Default", "Priority", or "Date".
+ * Depending on the `filterFlag` value, the component conditionally renders the `AddTodoForm` and `SearchBoxForm` components. 
+ * If `filterFlag` is "active", both forms are displayed. If `filterFlag` is "completed", only the `SearchBoxForm` is displayed.
+ * The component uses a `v-for` directive to loop over the `displayedTodos` array and render each todo item using the `TodoItem` component.
+ * The `displayedTodos` array is determined by the selected filter option. * 
+ */
 import TodoItem from "@/components/TodoItem.vue";
 import AddTodoForm from "@/components/AddTodoForm.vue";
-import SearchBox from "@/components/SearchBox.vue";
+import SearchBoxForm from "@/components/SearchBoxForm.vue";
 import { storeToRefs } from "pinia";
 import { ref, computed } from "vue"; 
 import { useTodoStore } from '@/stores/todoStore';
@@ -61,19 +73,21 @@ const { loading } = storeToRefs(todoStore);
 
 const selectedOption = ref("default");
 
+/**
+ * @description A computed property that returns the todos to display based on the selected filter option and the search string.
+ * @returns {Array} The todos to display.
+ */
 let displayedTodos = computed(() => {
-  if (selectedOption.value === "priority") {
-      return todoStore.filteredByPriority(props.todos);
-  } else if (todoStore.searchString) {
+  switch (true) {
+    case selectedOption.value === "priority":
+      return todoStore.filteredByPriority(props.todos); //still works but needs fix
+    case !!todoStore.searchString:
       return todoStore.searchedTodos(props.todos);
-  } else if (selectedOption.value === "date") {
+    case selectedOption.value === "date":
       return todoStore.filteredByDate(props.todos);
-  } 
-  else {
-    return props.todos; 
+    default:
+      return props.todos;
   }
 });
-</script>
-<style scoped>
 
-</style>
+</script>
