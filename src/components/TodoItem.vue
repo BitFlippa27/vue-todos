@@ -30,7 +30,7 @@
           </span>
         <div class="flex space-x-4">
           <select 
-            :class="['w-6 h-6 rounded-full','appearance-none', 'text-transparent', 'outline-none','cursor-pointer', priorityClass(props.todo?.priority)]"
+            :class="['w-6 h-6 rounded-full','appearance-none', 'text-transparent', 'outline-none','cursor-pointer','ml-4', priorityClass(props.todo?.priority)]"
             v-model="newPriority" 
             @change="handlePriorityChange($event.target as HTMLSelectElement)"
             title="Priority"
@@ -127,3 +127,13 @@ const priorityClass = (priority: number) => {
 
 
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>
