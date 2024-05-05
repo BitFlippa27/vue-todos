@@ -43,6 +43,16 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * @module TodoList
+ * @description 
+ * The `TodoList.vue` component is responsible for managing and displaying a list of todo items.The component 
+ * provides a dropdown menu that allows the user to sort the todo items by "Default", "Priority", or "Date".
+ * Depending on the `filterFlag` value, the component conditionally renders the `AddTodoForm` and `SearchBoxForm` components. 
+ * If `filterFlag` is "active", both forms are displayed. If `filterFlag` is "completed", only the `SearchBoxForm` is displayed.
+ * The component uses a `v-for` directive to loop over the `displayedTodos` array and render each todo item using the `TodoItem` component.
+ * The `displayedTodos` array is determined by the selected filter option. * 
+ */
 import TodoItem from "@/components/TodoItem.vue";
 import AddTodoForm from "@/components/AddTodoForm.vue";
 import SearchBoxForm from "@/components/SearchBoxForm.vue";
@@ -63,10 +73,14 @@ const { loading } = storeToRefs(todoStore);
 
 const selectedOption = ref("default");
 
+/**
+ * @description A computed property that returns the todos to display based on the selected filter option and the search string.
+ * @returns {Array} The todos to display.
+ */
 let displayedTodos = computed(() => {
   switch (true) {
     case selectedOption.value === "priority":
-      return todoStore.filteredByPriority(props.todos);
+      return todoStore.filteredByPriority(props.todos); //still works but needs fix
     case !!todoStore.searchString:
       return todoStore.searchedTodos(props.todos);
     case selectedOption.value === "date":

@@ -2,6 +2,32 @@ import { defineStore } from "pinia";
 import type { Todo } from "../types/todo";
 import type { State } from "../types/todo";
 
+/**
+ * Pinia Statemanagement Store
+ * Getters of the store.
+ * The result of every getter is a computed value from the one state array Todo.
+ * @typedef {Object} Getters
+ * @property {function(State): Todo[]} activeTodos - Returns an array of active todos.
+ * @property {function(State): Todo[]} completedTodos - Returns an array of completed todos.
+ * @property {function(State): function(Todo[]): Todo[]} searchedTodos - Returns an array of todos that include the searchString in their title.
+ * @property {function(State): function(Todo[]): Todo[]} filteredByPriority - Returns an array of todos sorted by their priority.
+ * @property {function(State): function(Todo[]): Todo[]} filteredByDate - Returns an array of todos sorted by their date where if (!a.date || !b.date) 
+ * is considered equal in terms of sorting and will be omitted.
+ * @property {function(State): number} totalActiveTodos - Returns the total number of active todos.
+ * @property {function(State): number} totalCompletedTodos - Returns the total number of completed todos.
+ */
+
+/**
+ * Actions of the store.
+ * @typedef {Object} Actions
+ * @property {function(): Promise<void>} getTodos - Fetches todos and updates the todos state array.
+ * @property {function(Todo): void} addTodo - Adds a new todo to the beggining of the todos state array.
+ * @property {function(Todo): void} updateTodo - Updates an existing todo in the state.
+ * @property {function(Todo): void} deleteTodo - Deletes a todo from the state.
+ * @property {function(): void} toggleCompleted - Updates the completed property of the todo to completed or active.
+ * @property {function(): void} setSearchString - sets the string from the searchfield to use it for the searchedTodos getter.
+ */
+
 
 export const useTodoStore = defineStore('todoStore', {
   state: (): State => ({
@@ -32,7 +58,7 @@ export const useTodoStore = defineStore('todoStore', {
     filteredByDate: (state: State) => (filteredTodos: Todo[]) => {
       return filteredTodos.slice().sort((a, b) => {
         if (!a.date || !b.date) {
-          return 0; //considered euqal in terms of sorting
+          return 0; 
         }
         return a.date.getTime() - b.date.getTime();
       })

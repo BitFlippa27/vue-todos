@@ -23,25 +23,8 @@ const addTodo = todoStore.addTodo;
 const newTodo = ref("");
 const newTodoPriority = ref(2);
 
-const validateInput = (input: string) => {
-  const patterns = [
-    /<[^>]*script.*>/gi, 
-    /<[^>]*on[a-z]*=.*>/gi, 
-    /javascript:/gi, 
-    /<[^>]+>/gi, 
-  ];
-
-  for (let pattern of patterns) {
-    if (pattern.test(input)) {
-      return false;
-    }
-  }
-
-  return true;
-}
 
 const handleSubmit = () => {
-  if (newTodo.value.length > 0 && validateInput(newTodo.value)) {
     addTodo({
       id: Math.floor(Math.random() * 1000),
       title: newTodo.value,
@@ -51,9 +34,6 @@ const handleSubmit = () => {
     });
     newTodo.value = "";
     newTodoPriority.value = 2;
-  } else {
-    alert("Invalid Input!")
-  }
 }
 
 </script>

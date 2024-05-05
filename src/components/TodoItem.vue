@@ -120,6 +120,14 @@ const handleRemoveTodo = (id: number) => {
 }
 
 
+/**
+ * @function priorityClass
+ * @description This function determines the background color of the circle icon of a todo item based on its priority level. 
+ * It takes a priority number as an argument and returns a string representing a CSS class.
+ * @param {number} priority - The priority level of the todo item. 
+ * @returns {string} 
+ */
+
 
 const priorityClass = (priority: number) => {
   switch(priority) {

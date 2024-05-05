@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'ubuntu': ['Ubuntu', 'sans-serif'],
+      },
       textColor: ['active'],
       colors: {
         'vue-brand1': '#42b883',
