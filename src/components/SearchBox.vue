@@ -1,5 +1,5 @@
 <template>
-  <div class="add-todo-form"> 
+  <div> 
     <form @submit.prevent="handleSearch"> 
     <input 
       class="form"

@@ -1,5 +1,5 @@
 <template>
-  <div class="add-todo-form"> 
+  <div> 
     <form @submit.prevent="handleSubmit" class="space-x-4"> 
     <input 
       class="form"
