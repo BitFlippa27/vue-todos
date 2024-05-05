@@ -1,8 +1,8 @@
 <template>
   <div class="w-70 md:w-3/4 lg:w-2/3 mx-auto todo-list">
-    <div class="space-y-4 flex justify-between">
+    <div class="space-y-4 flex justify-between items-center">
       <p class="text-xl text-gray-400">{{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})</p>
-      <div>
+      <div class="flex flex-col items-start">
         <p>Filter Todos</p>
         <select 
           class="bg-gray-800 p-1 mt-1 mb-8 text-gray-200 border-gray-600 rounded-md shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-300 focus:ring-opacity-75" 
