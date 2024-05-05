@@ -14,13 +14,14 @@
         </select>
       </div>
     </div>
-    <transition name="fade">
-      <div v-if="!loading">
-        <div v-for="todo in displayedTodos" :key="todo.id">
-          <TodoItem :todo="todo" />
-        </div>
+    
+    <div v-if="!loading">
+    <transition-group name="list" tag="div">
+      <div v-for="todo in displayedTodos" :key="todo.id">
+        <TodoItem :todo="todo" />
       </div>
-    </transition>
+    </transition-group>
+    </div>
     <div class="loading" v-if="loading">
       Loading Tasks...
     </div>
@@ -60,13 +61,5 @@ let displayedTodos = computed(() => {
 });
 </script>
 <style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 1s;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-.fade-enter-to, .fade-leave {
-  opacity: 1;
-}
+
 </style>
