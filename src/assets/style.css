@@ -11,7 +11,7 @@ body {
 }
 
 button {
-  @apply bg-gray-400 text-gray-800 px-4 py-2 rounded hover:bg-gray-500;
+  @apply bg-gray-400 text-gray-800 px-4 py-2 rounded hover:bg-gray-500 active:text-white;
 }
 
 @media (max-width: 640px) {
@@ -45,6 +45,12 @@ button {
   transform: translateY(-30px);
 }
 
+.after\:border-gradient::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(to right, #38b2ac, #4a5568);
+}
 /*
 body {
   background: #121212;

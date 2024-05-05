@@ -1,7 +1,7 @@
 <template>
   <div class="w-70 md:w-3/4 lg:w-2/3 mx-auto">
     <div class="space-y-4 flex justify-between">
-      <p class="text-xl">{{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})</p>
+      <p class="text-xl text-gray-400">{{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})</p>
       <div>
         <p>Filter Todos</p>
         <select 
@@ -14,7 +14,17 @@
         </select>
       </div>
     </div>
-    
+    <div    
+      v-if="filterFlag === 'active'" 
+    >
+      <AddTodoForm />
+      <SearchBox /> 
+    </div>
+    <div 
+      v-if="filterFlag === 'completed'" 
+    >
+      <SearchBox class="w-full" /> 
+    </div>
     <div v-if="!loading">
     <transition-group name="list" tag="div">
       <div v-for="todo in displayedTodos" :key="todo.id">
@@ -30,6 +40,8 @@
 
 <script setup lang="ts">
 import TodoItem from "@/components/TodoItem.vue";
+import AddTodoForm from "@/components/AddTodoForm.vue";
+import SearchBox from "@/components/SearchBox.vue";
 import { storeToRefs } from "pinia";
 import { ref, computed } from "vue"; 
 import { useTodoStore } from '@/stores/todoStore';
