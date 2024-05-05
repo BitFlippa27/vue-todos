@@ -6,6 +6,13 @@ export default {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      },
+      transitionDuration: {
+        '400': '400ms',
+      },
       textColor: ['active'],
       rotate: {
         '-10': '-10deg',

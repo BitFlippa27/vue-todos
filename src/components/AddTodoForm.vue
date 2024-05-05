@@ -5,7 +5,7 @@
       class="form"
       @keyup.enter="handleSubmit"
       type="text"
-      placeholder="Type in todo"
+      placeholder="Add todo"
       v-model="newTodo"
     >
     <button class="button">Add</button>

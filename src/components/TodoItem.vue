@@ -24,13 +24,14 @@
           </span>
         <div class="flex space-x-4">
           <select 
-        :class="['w-6 h-6 rounded-full','appearance-none', 'text-transparent', 'outline-none', priorityClass(props.todo?.priority)]"
-        v-model="newPriority" 
-        @change="handlePriorityChange($event.target as HTMLSelectElement)"
-      >
-        <option value="1">High</option>
-        <option value="2">Medium</option>
-        <option value="3">Low</option>
+            :class="['w-6 h-6 rounded-full','appearance-none', 'text-transparent', 'outline-none','cursor-pointer', priorityClass(props.todo?.priority)]"
+            v-model="newPriority" 
+            @change="handlePriorityChange($event.target as HTMLSelectElement)"
+            title="Priority"
+          >
+        <option class="text-gray-600" value="1">High</option>
+        <option class="text-gray-600" value="@2">Medium</option>
+        <option class="text-gray-600" value="3">Low</option>
       </select>
       <i 
         class="material-icons cursor-pointer text-gray-500 hover:text-white active:text-gray-700 " 
@@ -40,9 +41,9 @@
         edit
       </i>
       <i 
-        class="material-icons trash cursor-pointer text-gray-500 hover:text-white active:text-gray-700 " 
+        class="material-icons trash cursor-pointer text-gray-500 hover:text-red-500 active:text-gray-700 " 
         @click="handleRemoveTodo(props.todo?.id)"
-        title="'Remove'"
+        title="Remove"
       >
         delete
       </i>

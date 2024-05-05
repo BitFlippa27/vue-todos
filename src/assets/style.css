@@ -10,7 +10,7 @@ body {
   @apply bg-gray-800 text-gray-200 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-75
 }
 
-.button {
+button {
   @apply bg-gray-400 text-gray-800 px-4 py-2 rounded hover:bg-gray-500;
 }
 
@@ -37,6 +37,8 @@ header {
     @apply flex-col items-center space-y-4;
   }
 }
+
+
 /*
 body {
   background: #121212;

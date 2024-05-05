@@ -10,14 +10,14 @@
       </h1>
     </div>
     <nav class="space-x-4">
-      <button class="button">
+      <button>
         <router-link 
         :to="{ path: '/active'}"
       >
         Active Todos
       </router-link>
       </button >
-      <button class="button">
+      <button>
         <router-link 
         :to="{ path: '/completed'}"
       >
