@@ -14,13 +14,13 @@
         </select>
       </div>
     </div>
-    <transition name="fade" mode="out-in">
+    <transition name="fade">
       <div v-if="!loading">
         <div v-for="todo in displayedTodos" :key="todo.id">
           <TodoItem :todo="todo" />
         </div>
       </div>
-    </transition>  
+    </transition>
     <div class="loading" v-if="loading">
       Loading Tasks...
     </div>
@@ -42,7 +42,6 @@ const props = defineProps({
 });
 
 const todoStore = useTodoStore();
-//const filteredByDate = todoStore.filteredByDate;
 const { loading } = storeToRefs(todoStore);
 
 const selectedOption = ref("default");
@@ -60,5 +59,14 @@ let displayedTodos = computed(() => {
   }
 });
 </script>
-
-
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to, .fade-leave {
+  opacity: 1;
+}
+</style>

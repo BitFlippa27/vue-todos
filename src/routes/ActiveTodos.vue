@@ -8,12 +8,8 @@
       :todos="activeTodos"
       :totalTodos="totalActiveTodos"
       name="Active Todos"
-      :filterFlag="'active'"
     />
-  </div>
-
-    
-    
+  </div> 
 </template>
 
 <script setup lang="ts">
@@ -22,14 +18,6 @@ import AddTodoForm from "@/components/AddTodoForm.vue";
 import SearchBox from "@/components/SearchBox.vue";
 import { useTodoStore } from "@/stores/todoStore";
 import { storeToRefs } from "pinia";
-
-const props = defineProps({
-  todos: Object,
-  totalTodos: Number,
-  name: String,
-  filterOption: String
-});
-
 
 const todoStore = useTodoStore();
 

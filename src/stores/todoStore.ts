@@ -77,10 +77,13 @@ export const useTodoStore = defineStore('todoStore', {
       } catch (error) {
         if (error instanceof TypeError) {
           console.error("Network error or CORS misconfigured on the server-side: ", error);
+          this.loading = false;
         } else if (error instanceof Error) {
           console.error("HTTP error: ", error);
+          this.loading = false;
         } else {
           console.error("Unknown error: ", error);
+          this.loading = false;
         }
       }
     },
