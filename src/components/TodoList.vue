@@ -57,16 +57,17 @@ import TodoItem from "@/components/TodoItem.vue";
 import AddTodoForm from "@/components/AddTodoForm.vue";
 import SearchBoxForm from "@/components/SearchBoxForm.vue";
 import { storeToRefs } from "pinia";
-import { ref, computed } from "vue"; 
+import { ref, computed, type PropType } from "vue"; 
 import { useTodoStore } from '@/stores/todoStore';
+import type { Todo } from "@/types/todo";
 
 
 const props = defineProps({
-  todos: Object,
-  name: String,
-  totalTodos: Number,
-  filterFlag: String,
-});
+     todos: Array as PropType<Todo[]>,
+     name: String,
+     totalTodos: Number,
+     filterFlag: String,
+   });
 
 const todoStore = useTodoStore();
 const { loading } = storeToRefs(todoStore);
@@ -80,11 +81,11 @@ const selectedOption = ref("default");
 let displayedTodos = computed(() => {
   switch (true) {
     case selectedOption.value === "priority":
-      return todoStore.filteredByPriority(props.todos); //still works but needs fix
-    case !!todoStore.searchString:
-      return todoStore.searchedTodos(props.todos);
+      return todoStore.filteredByPriority(props.todos ?? []);
+    case !todoStore.searchString:
+      return todoStore.searchedTodos(props.todos ?? []);
     case selectedOption.value === "date":
-      return todoStore.filteredByDate(props.todos);
+      return todoStore.filteredByDate(props.todos ?? []) ;
     default:
       return props.todos;
   }

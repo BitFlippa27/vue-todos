@@ -96,6 +96,8 @@ export const useTodoStore = defineStore('todoStore', {
           console.error("Unknown error: ", error);
           this.loading = false;
         }
+      } finally {
+        this.loading = false;
       }
     },
     addTodo(todo: Todo) {
