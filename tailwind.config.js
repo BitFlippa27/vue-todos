@@ -6,6 +6,7 @@ export default {
   ],
   theme: {
     extend: {
+      textColor: ['active'],
       rotate: {
         '-10': '-10deg',
         '2': '2deg',
