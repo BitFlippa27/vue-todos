@@ -4,6 +4,7 @@
       v-if="!isCompleted" 
       class="flex items-center justify-between mt-8 bg-gray-800 text-gray-200 border-gray-700 p-4 border-2 rounded-md shadow-lg hover:bg-gray-700 transition-colors duration-200 font-bold"
     >
+    <div class="flex space-x-4">
       <i 
         :class="['material-icons', 'cursor-pointer', 'active:text-gray-700', props.todo?.completed ? 'text-blue-500' : '']"  
         @click="handleCompleteTodo(props.todo?.id)"
@@ -21,6 +22,8 @@
       />
       <h3 v-else :class="{ 'completed': props.todo?.completed }">
         {{ props.todo?.title }}</h3>
+    </div>
+      
         <div class="flex flex-col items-end space-y-2">
           <span class="text-xs text-gray-400">
             {{ props.todo?.date?.toLocaleDateString() }}
@@ -33,7 +36,7 @@
             title="Priority"
           >
         <option class="text-gray-600" value="1">High</option>
-        <option class="text-gray-600" value="@2">Medium</option>
+        <option class="text-gray-600" value="2">Medium</option>
         <option class="text-gray-600" value="3">Low</option>
       </select>
       <i 

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-70 md:w-3/4 lg:w-1/3 mx-auto">
+  <div class="w-70 md:w-3/4 lg:w-2/3 mx-auto">
     <div class="space-y-4 flex justify-between">
       <p class="text-xl">{{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})</p>
       <div>

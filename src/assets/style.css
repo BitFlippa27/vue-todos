@@ -28,9 +28,6 @@ button {
   }
 }
 
-header {
-  @apply sticky top-0 z-10 bg-gray-800 p-5 flex justify-between items-center space-x-4;
-}
 
 @media (max-width: 640px) {
   header {
