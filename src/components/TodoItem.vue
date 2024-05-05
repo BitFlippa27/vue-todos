@@ -36,7 +36,7 @@
             title="Priority"
           >
         <option class="text-gray-600" value="1">High</option>
-        <option class="text-gray-600" value="@2">Medium</option>
+        <option class="text-gray-600" value="2">Medium</option>
         <option class="text-gray-600" value="3">Low</option>
       </select>
       <i 
