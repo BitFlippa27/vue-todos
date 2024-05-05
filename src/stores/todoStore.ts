@@ -1,3 +1,4 @@
+import ActiveTodos from "@/routes/ActiveTodos.vue";
 import { defineStore } from "pinia";
 
 type Todo = {
@@ -12,7 +13,6 @@ type State = {
   todos: Todo[];
   loading: boolean;
   searchString: string;
-  filterOption: string;
   priority: number;
   date: Date;
 };
@@ -25,21 +25,15 @@ export const useTodoStore = defineStore('todoStore', {
     searchString: "",
     priority: 1,
     date: new Date(),
-    filterOption: "",
   }),
   getters: {
-    activeTodos: (state: State) =>{
+    activeTodos: (state: State) => {
       return state.todos.filter(todo => todo.completed === false)
     }, 
     completedTodos: (state: State) =>{
       return state.todos.filter(todo => todo.completed === true)
     }, 
-    filteredTodos: (state: State) => {
-      let filteredTodos = state.todos.filter(todo => 
-        state.filterOption ? todo.completed : !todo.completed);
-
-        return filteredTodos;
-    },
+    
     searchedTodos: (state: State) => (filteredTodos: Todo[]) => {
       if (state.searchString) {
         filteredTodos = filteredTodos.filter(todo => 
@@ -58,12 +52,12 @@ export const useTodoStore = defineStore('todoStore', {
         return a.date.getTime() - b.date.getTime();
       })
     },
-    totalActiveTodos(state: State) {
+    totalActiveTodos: (state: State) => {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === false ? prev + 1 : prev
       }, 0)
     },
-    totalCompletedTodos(state: State) {
+    totalCompletedTodos: (state: State) => {
       return state.todos.reduce((prev, curr) => {
         return curr.completed === true ? prev + 1 : prev
       }, 0)
@@ -91,9 +85,7 @@ export const useTodoStore = defineStore('todoStore', {
       }
     },
     addTodo(todo: Todo) {
-      console.log("todoStore",todo);
-      this.todos.unshift(todo);
-     
+      this.todos.unshift(todo);     
     },
     updateTodo(updatedTodo: Todo) {
       const index = this.todos.findIndex(todo => todo.id === updatedTodo.id)

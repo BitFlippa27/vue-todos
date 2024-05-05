@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="todo" v-if="!isCompleted">
+    <div v-if="!isCompleted" class="mt-8 bg-gray-800 text-gray-200 border-gray-700 border-2 rounded-md shadow-lg hover:bg-gray-700 transition-colors duration-200">
       <i 
         :class="{ 'active': props.todo?.completed }" 
         class="material-icons" @click="handleCompleteTodo(props.todo?.id)"
