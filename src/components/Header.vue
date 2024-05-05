@@ -10,22 +10,19 @@
       </h1>
     </div>
     <nav class="space-x-4">
-      <button>
-        <router-link 
+      <router-link 
         :to="{ path: '/active'}"
+        class="inline-block px-4 py-2 border-b-2 border-transparent text-gray-300 after:border-gradient active:text-white font-semibold"
       >
         Active Todos
       </router-link>
-      </button >
-      <button>
-        <router-link 
+      <router-link 
         :to="{ path: '/completed'}"
+        class="inline-block px-4 py-2 border-b-2 border-transparent text-gray-300  after:border-gradient active:text-white font-semibold"
       >
         Completed Todos
-        </router-link>
-      </button>
+      </router-link>
     </nav>
     <div class="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-emerald-400 to-gray-500"></div>
   </header> 
 </template>
-
