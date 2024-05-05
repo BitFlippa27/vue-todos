@@ -6,14 +6,11 @@ export default {
   ],
   theme: {
     extend: {
-      transitionProperty: {
-        'height': 'height',
-        'spacing': 'margin, padding',
-      },
-      transitionDuration: {
-        '400': '400ms',
-      },
       textColor: ['active'],
+      colors: {
+        'vue-brand1': '#42b883',
+        'vue-brand2': '#35495e'
+      },
       rotate: {
         '-10': '-10deg',
         '2': '2deg',

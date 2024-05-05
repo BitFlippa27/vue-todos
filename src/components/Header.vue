@@ -4,7 +4,8 @@
       <img 
         class="max-w-xs transform rotate-[-10deg]" 
         src="../assets/vuejs-icon.svg" 
-        alt="Vue Logo">
+        alt="Vue Logo"
+      >
       <h1 class="text-2xl p-4 ml-4 text-white transform rotate-[2deg] border-b-4 border-transparent bg-gradient-to-r from-emerald-600 to-gray-500 rounded-lg">
         Vue Todos
       </h1>
@@ -12,13 +13,13 @@
     <nav class="space-x-4">
       <router-link 
         :to="{ path: '/active'}"
-        class="inline-block px-4 py-2 border-b-2 border-transparent text-gray-300 after:border-gradient active:text-white font-semibold"
+        class="inline-block px-4 py-2 border-b-2 border-transparent text-gray-300 after:border-gradient hover:border-opacity-0 active:text-white active:font-extrabold font-semibold"
       >
         Active Todos
       </router-link>
       <router-link 
         :to="{ path: '/completed'}"
-        class="inline-block px-4 py-2 border-b-2 border-transparent text-gray-300  after:border-gradient active:text-white font-semibold"
+        class="inline-block px-4 py-2 border-b-2 border-transparent text-gray-300 after:border-gradient hover:border-opacity-0 active:text-white active:font-extrabold font-semibold"
       >
         Completed Todos
       </router-link>

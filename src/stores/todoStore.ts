@@ -1,21 +1,6 @@
-import ActiveTodos from "@/routes/ActiveTodos.vue";
 import { defineStore } from "pinia";
-
-type Todo = {
-  id: number;
-  title: string;
-  completed: boolean;
-  priority: number;
-  date: Date;
-};
-
-type State = {
-  todos: Todo[];
-  loading: boolean;
-  searchString: string;
-  priority: number;
-  date: Date;
-};
+import type { Todo } from "../types/todo";
+import type { State } from "../types/todo";
 
 
 export const useTodoStore = defineStore('todoStore', {

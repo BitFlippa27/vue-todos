@@ -1,7 +1,9 @@
 <template>
   <div class="w-70 md:w-3/4 lg:w-2/3 mx-auto todo-list">
     <div class="space-y-4 flex justify-between items-center">
-      <p class="text-xl text-gray-400">{{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})</p>
+      <p class="text-xl text-gray-400">
+        {{ name ?? "Todos" }} ({{ totalTodos ?? 0 }})
+      </p>
       <div class="flex flex-col items-start">
         <p>Filter Todos</p>
         <select 
@@ -18,21 +20,21 @@
       class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between"  
       v-if="filterFlag === 'active'" 
     >
-      <AddTodoForm class="w-full sm:w-1/2"  />
-      <SearchBox  /> 
+      <AddTodoForm />
+      <SearchBoxForm />
     </div>
     <div
       class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between" 
       v-if="filterFlag === 'completed'"
     >
-      <SearchBox class="w-full sm:w-1/2" /> 
+      <SearchBoxForm /> 
     </div>
     <div v-if="!loading">
-    <transition-group name="list" tag="div">
-      <div v-for="todo in displayedTodos" :key="todo.id">
-        <TodoItem :todo="todo" />
-      </div>
-    </transition-group>
+      <transition-group name="list" tag="div">
+        <div v-for="todo in displayedTodos" :key="todo.id">
+          <TodoItem :todo="todo" />
+        </div>
+      </transition-group>
     </div>
     <div class="loading" v-if="loading">
       Loading Tasks...
@@ -43,7 +45,7 @@
 <script setup lang="ts">
 import TodoItem from "@/components/TodoItem.vue";
 import AddTodoForm from "@/components/AddTodoForm.vue";
-import SearchBox from "@/components/SearchBox.vue";
+import SearchBoxForm from "@/components/SearchBoxForm.vue";
 import { storeToRefs } from "pinia";
 import { ref, computed } from "vue"; 
 import { useTodoStore } from '@/stores/todoStore';
@@ -62,18 +64,16 @@ const { loading } = storeToRefs(todoStore);
 const selectedOption = ref("default");
 
 let displayedTodos = computed(() => {
-  if (selectedOption.value === "priority") {
+  switch (true) {
+    case selectedOption.value === "priority":
       return todoStore.filteredByPriority(props.todos);
-  } else if (todoStore.searchString) {
+    case !!todoStore.searchString:
       return todoStore.searchedTodos(props.todos);
-  } else if (selectedOption.value === "date") {
+    case selectedOption.value === "date":
       return todoStore.filteredByDate(props.todos);
-  } 
-  else {
-    return props.todos; 
+    default:
+      return props.todos;
   }
 });
-</script>
-<style scoped>
 
-</style>
+</script>
