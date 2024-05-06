@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 body {
-  @apply bg-gray-900 text-gray-500 font-sans;
+  @apply bg-gray-900 text-gray-500 font-ubuntu;
 }
 
 button {
@@ -33,7 +34,7 @@ button {
 }
 
 .form {
-  @apply bg-gray-800 text-gray-200 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-75
+  @apply bg-gray-800 w-3/4 sm:w-auto text-gray-200 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-75
 }
 
 .todolist {
