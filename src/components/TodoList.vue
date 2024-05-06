@@ -82,7 +82,7 @@ let displayedTodos = computed(() => {
   switch (true) {
     case selectedOption.value === "priority":
       return todoStore.filteredByPriority(props.todos ?? []);
-    case !todoStore.searchString:
+    case !!todoStore.searchString:
       return todoStore.searchedTodos(props.todos ?? []);
     case selectedOption.value === "date":
       return todoStore.filteredByDate(props.todos ?? []) ;
