@@ -22,7 +22,9 @@
           @blur="handleSubmit" 
           @keyup.enter="handleSubmit" 
           class="form"
+          :placeholder="errorMessage"
         />
+        
         <h3 v-else :class="{ 'completed': props.todo?.completed }">
           {{ props.todo?.title }}
         </h3>
@@ -72,7 +74,7 @@
 <script setup lang="ts">
 import { useTodoStore } from '@/stores/todoStore';
 import { ref } from "vue";
-import type { Todo } from "../types/todo";
+import type { Todo } from "@/types/todo";
 /**
  * @module TodoList
  * @description 
@@ -86,10 +88,16 @@ const props = defineProps<{
 let editableTitle = ref(props.todo?.title)
 let editing = ref(false);
 const newPriority = ref();
+const errorMessage = ref("");
 
 const todoStore = useTodoStore();
 
 const handleSubmit = () => {
+  if (editableTitle.value.trim() === "") {
+    errorMessage.value = "Input cannot be empty"; 
+    return;
+  } 
+    errorMessage.value = ""; 
     todoStore.updateTodo({
     id: props.todo?.id,
     title: editableTitle.value,

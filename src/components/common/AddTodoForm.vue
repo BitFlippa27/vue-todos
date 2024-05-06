@@ -23,17 +23,20 @@ const addTodo = todoStore.addTodo;
 const newTodo = ref("");
 const newTodoPriority = ref(2);
 
-
 const handleSubmit = () => {
-    addTodo({
-      id: Math.floor(Math.random() * 1000),
-      title: newTodo.value,
-      completed: false,
-      priority: newTodoPriority.value,
-      date: new Date()
-    });
-    newTodo.value = "";
-    newTodoPriority.value = 2;
+  if (newTodo.value.trim() === "") {
+    return;
+  }
+  addTodo({
+    id: Math.floor(Math.random() * 1000),
+    title: newTodo.value,
+    completed: false,
+    priority: newTodoPriority.value,
+    date: new Date()
+  });
+  newTodo.value = "";
+  newTodoPriority.value = 2;
 }
+
 
 </script>
