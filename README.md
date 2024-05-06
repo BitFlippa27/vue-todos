@@ -35,8 +35,16 @@ Vue Todos is a simple, yet powerful, task management application using the lates
 - Error in state
 - Use utility functions and then import into the store
 - Not pass the whole array into the filter functions, pass a boolean to tell which array an then in the store getters filter from the state
+- Testing
+- Maybe fewer commits
 - And See Issues https://github.com/BitFlippa27/vue-todos/issues
 
   
+## Local Usage
+- `cd vue-todos`
+- `npm i`
+- `npm run dev`
+- App runs on http://localhost:5173
+
 ### URL to the app
 https://vue-todos-sit.vercel.app/
