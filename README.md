@@ -7,6 +7,8 @@ Vue Todos is a simple, yet powerful, task management application using the lates
 - **Task Management:** Users can add, edit, and delete tasks. Each task has a title, completion status, priority level, and creation date.
 - **Task Prioritization:** Users can set the priority of each task to high, medium, or low. 
 - **Task Completion:** Users can mark tasks as completed.
+- **Task Filtering**: Users can filter tasks by date.
+
 
 ## Technical Details
 
