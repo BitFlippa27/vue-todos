@@ -24,5 +24,19 @@ Vue Todos is a simple, yet powerful, task management application using the lates
 -  Based on their completion status the todo is rendered on either the one or the other route/view. (ActiveTodos.vue and CompletedTodo.vue)
 -  The App manages all in one state array. So the filtering by date, filtering by priority and distinguishing between active and completed todos is all derived from that one initial state array which is fetched from the API.
 
-# URL to the app
+## Futher Improvements
+- Maybe adding two state arrays. One array for the completed todos and one for the actives.
+- Modal before deleting todo
+- Specific filterng of todos by priority high to low, sorting by date new to old
+- Loading spinner for loading state 
+- Clickable Logo which redirecte to Home
+- Proper ids, not Math.random()
+- Search symbol for search
+- Error in state
+- Use utility functions and then import into the store
+- Not pass the whole array into the filter functions, pass a boolean to tell which array an then in the store getters filter from the state
+- And See Issues https://github.com/BitFlippa27/vue-todos/issues
+
+  
+### URL to the app
 https://vue-todos-sit.vercel.app/
