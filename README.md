@@ -1,6 +1,6 @@
 # Vue Todos
 
-Vue Todos is a simple, yet powerful, task management application using the latest techologies for the Vue.js ecosystem.
+Vue Todos is a simple, yet powerful, task management application using the latest techologies from the Vue.js ecosystem.
 
 ## Features
 
