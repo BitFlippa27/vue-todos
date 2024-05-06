@@ -1,7 +1,6 @@
 <template>
   <transition name="fade">
     <div 
-      v-if="!isCompleted" 
       class="flex items-center justify-between mt-8 bg-gray-800 text-gray-200 border-gray-700 p-4 border-2 rounded-md shadow-lg hover:bg-gray-700 transition-colors duration-200 font-bold"
     >
       <div class="flex space-x-4">
@@ -74,7 +73,11 @@
 import { useTodoStore } from '@/stores/todoStore';
 import { ref } from "vue";
 import type { Todo } from "../types/todo";
-
+/**
+ * @module TodoList
+ * @description 
+ * The component displays the todo item based on if it is completed or active. Via props an active or completed todo is passed.
+ */
 
 const props = defineProps<{
   todo: Todo;
@@ -82,7 +85,6 @@ const props = defineProps<{
 
 let editableTitle = ref(props.todo?.title)
 let editing = ref(false);
-const isCompleted = ref(false);
 const newPriority = ref();
 
 const todoStore = useTodoStore();
@@ -110,26 +112,21 @@ const handlePriorityChange = (target: HTMLSelectElement) => {
 }
 
 const handleCompleteTodo = (id: number) => {
-  isCompleted.value = true; 
-  setTimeout(() => todoStore.toggleCompleted(id), 500); 
+  todoStore.toggleCompleted(id);
 }
 
 const handleRemoveTodo = (id: number) => {
-  isCompleted.value = true;
-  setTimeout(() => todoStore.removeTodo(id), 500); 
+  todoStore.removeTodo(id);
 }
 
 
 /**
  * @function priorityClass
  * @description This function determines the background color of the circle icon of a todo item based on its priority level. 
- * It takes a priority number as an argument and returns a string representing a CSS class.
  * @param {number} priority - The priority level of the todo item. 
  * @returns {string} 
  */
-
-
-const priorityClass = (priority: number) => {
+const priorityClass = (priority: number): string => {
   switch(priority) {
     case 1: 
       return "bg-red-500";
@@ -142,15 +139,4 @@ const priorityClass = (priority: number) => {
      }
    }
 
-
 </script>
-
-<style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-</style>

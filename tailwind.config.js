@@ -14,6 +14,9 @@ export default {
         'vue-brand1': '#42b883',
         'vue-brand2': '#35495e'
       },
+      screens: {
+        'xs': '320px',
+      },
       rotate: {
         '-10': '-10deg',
         '2': '2deg',

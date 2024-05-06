@@ -12,4 +12,5 @@ export type State = {
   searchString: string;
   priority: number;
   date: Date;
+  error: string;
 };

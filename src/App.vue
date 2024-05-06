@@ -1,16 +1,14 @@
 <template>
   <main class="app-container"> 
     <Header />
-    <transition name="fade">
-      <router-view />
-    </transition>
+    <router-view />
   </main>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { useTodoStore } from "@/stores/todoStore";
-import Header from "@/components/Header.vue";
+import Header from "@/components/sections/Header.vue";
 
 const todoStore = useTodoStore();
 

@@ -36,7 +36,7 @@
         </div>
       </transition-group>
     </div>
-    <div class="loading" v-if="loading">
+    <div class="mt-8" v-if="loading">
       Loading Tasks...
     </div>
   </div>
@@ -53,9 +53,9 @@
  * The component uses a `v-for` directive to loop over the `displayedTodos` array and render each todo item using the `TodoItem` component.
  * The `displayedTodos` array is determined by the selected filter option. * 
  */
-import TodoItem from "@/components/TodoItem.vue";
-import AddTodoForm from "@/components/AddTodoForm.vue";
-import SearchBoxForm from "@/components/SearchBoxForm.vue";
+import TodoItem from "@/components/todos/TodoItem.vue";
+import AddTodoForm from "@/components/common/AddTodoForm.vue";
+import SearchBoxForm from "@/components/common/SearchBoxForm.vue";
 import { storeToRefs } from "pinia";
 import { ref, computed, type PropType } from "vue"; 
 import { useTodoStore } from '@/stores/todoStore';

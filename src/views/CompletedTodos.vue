@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import TodoList from "@/components/TodoList.vue";
+import TodoList from "@/components/todos/TodoList.vue";
 import { useTodoStore } from "@/stores/todoStore";
 import { storeToRefs } from "pinia";
 
