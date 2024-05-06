@@ -23,3 +23,6 @@ Vue Todos is a simple, yet powerful, task management application using the lates
 - The App fetches todos from the https://jsonplaceholder.typicode.com/todos API which are marked with a property if they are completed or active.
 -  Based on their completion status the todo is rendered on either the one or the other route/view. (ActiveTodos.vue and CompletedTodo.vue)
 -  The App manages all in one state array. So the filtering by date, filtering by priority and distinguishing between active and completed todos is all derived from that one initial state array which is fetched from the API.
+
+# URL to the app
+https://vue-todos-sit.vercel.app/
