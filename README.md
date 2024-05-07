@@ -39,6 +39,7 @@ Vue Todos is a simple, yet powerful, task management application using the lates
 - Maybe fewer commits
 - And See Issues https://github.com/BitFlippa27/vue-todos/issues
 - use list items instead of just divs
+- further component encapsulations
 
   
 ## Local Usage
