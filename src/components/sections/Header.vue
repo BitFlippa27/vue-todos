@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-10 text-center bg-gray-800 p-5 flex justify-between items-center">
+  <header class="flex justify-between items-center sticky top-0 z-10 text-center bg-gray-800 p-5">
     <div class="flex items-center">
       <img 
         class="max-w-xs transform rotate-[-10deg]" 

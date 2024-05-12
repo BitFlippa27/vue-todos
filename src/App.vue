@@ -6,9 +6,10 @@
 </template>
 
 <script setup lang="ts">
+import Header from "@/components/sections/Header.vue";
+
 import { onMounted } from 'vue';
 import { useTodoStore } from "@/stores/todoStore";
-import Header from "@/components/sections/Header.vue";
 
 const todoStore = useTodoStore();
 

@@ -8,7 +8,7 @@
       placeholder="Add todo"
       v-model="newTodo"
     >
-    <button class="button">Add</button>
+    <button>Add</button>
    </form>
   </div>
 </template>

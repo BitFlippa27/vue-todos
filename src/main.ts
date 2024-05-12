@@ -5,7 +5,7 @@ import router from "./router/index"
 
 import './assets/style.css'
 
-
+const app = createApp(App);
 const pinia = createPinia();
 
-createApp(App).use(pinia).use(router).mount('#app');
+app.use(pinia).use(router).mount('#app');
