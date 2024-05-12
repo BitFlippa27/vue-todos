@@ -24,7 +24,7 @@
       <SearchBoxForm />
     </div>
     <div
-      class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between" 
+      class="flex" 
       v-if="filterFlag === 'completed'"
     >
       <SearchBoxForm /> 

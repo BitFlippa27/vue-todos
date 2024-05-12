@@ -64,15 +64,15 @@ export const useTodoStore = defineStore('todoStore', {
         return a.date.getTime() - b.date.getTime();
       })
     },
-    totalActiveTodos: (state: State): number => {
-      return state.todos.reduce((prev, curr) => {
-        return curr.completed === false ? prev + 1 : prev
-      }, 0)
-    },
-    totalCompletedTodos: (state: State): number => {
-      return state.todos.reduce((prev, curr) => {
-        return curr.completed === true ? prev + 1 : prev
-      }, 0)
+    totalTodos: (state: State): { active: number, completed: number } => {
+      return state.todos.reduce((totals, todo) => {
+        if (todo.completed) {
+          totals.completed += 1;
+        } else {
+          totals.active += 1;
+        }
+        return totals;
+      }, { active: 0, completed: 0 });
     },
   },
   actions: {
