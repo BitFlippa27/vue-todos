@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center space-y-8 mt-12 px-4 sm:px-0 ">
     <TodoList
       :todos="activeTodos"
-      :totalTodos="totalActiveTodos"
+      :totalTodos="totalTodos.active"
       name="Active Todos"
       :filterFlag="'active'"
     />
@@ -16,7 +16,7 @@ import { storeToRefs } from "pinia";
 
 const todoStore = useTodoStore();
 
-const { activeTodos, totalActiveTodos } = storeToRefs(todoStore);
+const { activeTodos, totalTodos } = storeToRefs(todoStore);
 
 </script>
 
