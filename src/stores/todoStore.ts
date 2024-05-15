@@ -5,7 +5,7 @@ import type { State } from "../types/todo";
 /**
  * Pinia Statemanagement Store
  * Getters of the store.
- * The result of every getter is a computed value from the one state array Todo.
+ * The result of every getter is a computed value from the one todos state array.
  * @typedef {Object} Getters
  * @property {function(State): Todo[]} activeTodos - Returns an array of active todos.
  * @property {function(State): Todo[]} completedTodos - Returns an array of completed todos.

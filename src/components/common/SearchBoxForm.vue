@@ -16,15 +16,23 @@
 
 <script setup lang="ts">
 import { useTodoStore } from '@/stores/todoStore';
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
 
 const todoStore = useTodoStore();
 const setSearchString = todoStore.setSearchString;
 
 const searchField = ref("");
+const route = useRoute();
+
+watch(route, () => {
+  searchField.value = '';
+  setSearchString(searchField.value);
+}, { immediate: true });
 
 const handleSearch = () => {
   setSearchString(searchField.value);
 }
+
 
 </script>
