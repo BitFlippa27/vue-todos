@@ -1,13 +1,13 @@
 <template>
   <div> 
     <form @submit.prevent="handleSubmit" class="space-x-4"> 
-    <input 
-      class="form"
-      @keyup.enter="handleSubmit"
-      type="text"
-      placeholder="Add todo"
-      v-model="newTodo"
-    >
+      <input 
+        class="form"
+        @keyup.enter="handleSubmit"
+        type="text"
+        placeholder="Add todo"
+        v-model="newTodo"
+      >
     <button>Add</button>
    </form>
   </div>
