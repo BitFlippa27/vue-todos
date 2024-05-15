@@ -26,6 +26,7 @@ Vue Todos is a simple, yet powerful, task management application using the lates
 
 ## Futher Improvements
 - Maybe adding two state arrays. One array for the completed todos and one for the actives.
+- Add proper input validation
 - Modal before deleting todo
 - Specific filterng of todos by priority high to low, sorting by date new to old
 - Loading spinner for loading state 
@@ -37,9 +38,10 @@ Vue Todos is a simple, yet powerful, task management application using the lates
 - Not pass the whole array into the filter functions, pass a boolean to tell which array an then in the store getters filter from the state
 - Testing
 - Maybe fewer commits
-- And See Issues https://github.com/BitFlippa27/vue-todos/issues
 - use list items instead of just divs
-- further component encapsulations
+- further component encapsulations using Vue slots
+- And See Issues https://github.com/BitFlippa27/vue-todos/issues
+
 
   
 ## Local Usage
