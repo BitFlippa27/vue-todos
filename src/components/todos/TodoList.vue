@@ -78,17 +78,23 @@ const selectedOption = ref("default");
  * @description A computed property that returns the todos to display based on the selected filter option and the search string.
  * @returns {Array} The todos to display.
  */
-let displayedTodos = computed(() => {
-  switch (true) {
-    case selectedOption.value === "priority":
-      return todoStore.filteredByPriority(props.todos ?? []);
-    case !!todoStore.searchString:
-      return todoStore.searchedTodos(props.todos ?? []);
-    case selectedOption.value === "date":
-      return todoStore.filteredByDate(props.todos ?? []) ;
-    default:
-      return props.todos;
+ let displayedTodos = computed(() => {
+  let todos = props.todos ?? []
+  
+  if (todoStore.searchString !== "") {
+    todos = todoStore.searchedTodos(todos);
   }
+
+  switch (selectedOption.value) {
+    case "priority":
+      todos = todoStore.filteredByPriority(todos);
+      break;
+    case "date":
+      todos = todoStore.filteredByDate(todos);
+      break;
+  }
+
+  return todos;
 });
 
 </script>
